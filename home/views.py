@@ -1,25 +1,11 @@
-from django.shortcuts import render, HttpResponse, redirect
-from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
 from django.contrib.auth import logout, authenticate, login
-from datetime import datetime
-from home.models import Contact
 from django.contrib import messages
-
-# dummy
-# from django.views.generic import ListView
 from home.models import Contact
-from django.contrib.auth.forms import UserCreationForm
 from home.forms import CreateUserForm
 from django.contrib.auth.decorators import login_required
 from .models import Destination
 
-
-# from django.views.generic import ListView, CreateView # new
-# from django.urls import reverse_lazy # new
-
-# from home.forms import ImageForm # new
-
-# dummy
 
 # Create your views here.
 
@@ -77,39 +63,6 @@ def logoutUser(request):
     return redirect("/login")
 
 
-# dummy1
-# def contact(request):
-#    if request.method=="POST":
-#        name=request.POST.get('name')
-#        image=request.POST.get('image')
-#        contact=Contact(name=name,image=image)
-#        contact.save()
-#        messages.success(request, 'Your message has been sent!')
-#    return render(request,"contact.html")
-
-# def contact(request):
-#    lastimage=Contact.objects.last()
-#    image=lastimage.image
-
-#    form=ImageForm(request.POST or None, request.FILES or None)
-#    if form.is_valid():
-#        form.save()
-
-#    context={'image':image, 'form':form}
-
-#    return render(request, 'contact.html', context)
-
-# def contact(request):
-# if request.method =='POST':
-# form=ImageForm(request.POST, request.FILES)
-# if form.is_valid():
-# form.save()
-# img_obj=form.instance
-# return render(request, 'contact.html', {'form':form, 'img_obj':img_obj})
-# else:
-# form= ImageForm()
-# return render(request, 'contact.html', {'form':form})
-
 def blog(request):
     dests = Destination.objects.all()
 
@@ -137,21 +90,3 @@ def contact(request):
         messages.success(request, 'Your message has been sent!')
         messages.success(request, 'Your message has been sent!')
     return render(request, "contact.html")
-# dummy1
-
-# dummy
-# class HomePageView(ListView):
-#    model = Post
-#    template_name = 'index.html'
-
-
-# class HomePageView(ListView):
-#    model = Post
-#    template_name = 'index.html'
-
-# class CreatePostView(CreateView): # new
-#    model = Post
-#    form_class = PostForm
-#    template_name = 'post.html'
-#    success_url = reverse_lazy('index')
-# dummy
